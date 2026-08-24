@@ -1,0 +1,1 @@
+Unofficial ElegooSlicer add-ons, UI patches, compatibility fixes and experiments, organized by feature and slicer version. Linux-focused, version-scoped, and not affiliated with ELEGOO.
