@@ -20,20 +20,20 @@ PAYLOAD_DIR = SCRIPT_DIR / "payload"
 REGIONS = (
     (
         "ElegooLink getFileList mapping",
-        "async getFileList(t,n){return this.withIpcCommandDelivery(Pt.GetFileList,async()=>{var r,i;try",
-        "async getFileDetail(t,n){return this.withIpcCommandDelivery",
+        "async getFileList(t,n){var r,o;try{const s=n.params.offset",
+        'async getFileDetail(t,n){try{Se.log("[RTM ] 正在获取文件详情:",n);',
         "get-file-list.js",
     ),
     (
         "file metadata row mapping",
-        'Y=H(()=>{{const De=[];return B.value==="file"||B.value==="printHistory"?',
-        "Ke(Y,De=>",
+        'j=V(()=>{{const de=[];return F.value==="file"||F.value==="printHistory"?',
+        "});Je(j,de=>{de&&de.length>0&&I()}),Je(O,de=>{de&&I()});",
         "file-list-mapping.js",
     ),
     (
         "print-file-list Vue component",
-        'RWe=Xe({__name:"print-file-list"',
-        ",kWe=Zn(RWe,",
+        'cZe=Xe({__name:"print-file-list"',
+        '}),lZe=rr(cZe,[["__scopeId","data-v-b3782355"]])',
         "print-file-list-component.js",
     ),
 )
@@ -44,8 +44,6 @@ def read_payload(name: str) -> str:
     if not path.is_file():
         raise RuntimeError(f"Missing payload: {path}")
     return path.read_text(encoding="utf-8")
-
-
 def replace_region(
     text: str,
     label: str,
@@ -81,9 +79,6 @@ def patch(source: Path, destination: Path) -> None:
         )
 
     css = read_payload("file-list.css").rstrip("\n")
-    if 'id="cc2-filelist-v3"' in text:
-        raise RuntimeError("CC2 file-list CSS marker already exists")
-
     head_end = text.find("</head>")
     if head_end < 0:
         raise RuntimeError("</head> marker not found")

@@ -1,0 +1,5 @@
+<style>
+#app .cc2-file-table{width:100%!important}
+#app .cc2-file-table.el-table--border::before,#app .cc2-file-table.el-table--border::after,#app .cc2-file-table .el-table__inner-wrapper::after,#app .cc2-file-table .el-table__border-left-patch{display:none!important}
+#app .cc2-file-table.el-table--border .el-table__cell{border-right-color:transparent!important}
+</style>

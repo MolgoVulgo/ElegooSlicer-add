@@ -17,7 +17,7 @@ last_print_time
 type
 ```
 
-The stock ElegooSlicer v1.5.3.4 frontend already receives several of these fields but does not display all of them.
+The stock frontend already receives several of these fields but does not display all of them.
 
 This patch exposes the existing metadata to the table instead of issuing one extra detail request per row.
 
@@ -71,14 +71,14 @@ The payload files still look minified because they replace code inside the upstr
 
 ## Integrity checks
 
-ElegooSlicer v1.5.3.4 original `index.html` SHA256:
+Known original `index.html` SHA256:
 
 ```text
-bb4b7a4b357409c87eee5804e721c385af9c0e3efc8f4a04aeba1c466e434c94
+ca4d84dbd85c0e1da23f94991cdcf1d32a5412b78de4dd17aff79ec53a28e6a3
 ```
 
-Expected patched file SHA256:
+Known patched `index.html` SHA256 values:
 
 ```text
-63a3b3a1eff0e570bac548358e58255b4179efdb483a22099eb830942d408931
+c18c722e5b8460696127c5cbc42228868684d3bf261f51a419b8bebefa76093f
 ```

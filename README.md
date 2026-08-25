@@ -4,7 +4,7 @@ Unofficial ElegooSlicer add-ons, UI patches, compatibility fixes and experiments
 
 Repository: https://github.com/MolgoVulgo/ElegooSlicer-add
 
-This repository is intended to host small, isolated hacks rather than a fork of ElegooSlicer. Each hack lives in its own directory and is version-scoped when it modifies bundled application resources.
+This repository is intended to host small, isolated patches rather than a fork of ElegooSlicer. Each patch lives in its own directory and is validated against known target-file checksums before it can be installed.
 
 ## Repository layout
 
@@ -12,22 +12,23 @@ This repository is intended to host small, isolated hacks rather than a fork of 
 ElegooSlicer-add/
 ├── README.md
 ├── REPOSITORY_DESCRIPTION.txt
-└── hacks/
-    ├── README.md
+├── install.sh
+├── docs/
+└── patches/
     └── cc2-file-list/
         ├── README.md
         ├── TECHNICAL.md
-        └── v1.5.3.4/
-            ├── install.sh
-            ├── install.min.sh
-            ├── metadata.env
-            ├── patcher.py
-            └── payload/
-                ├── README.md
-                ├── get-file-list.js
-                ├── file-list-mapping.js
-                ├── print-file-list-component.js
-                └── file-list.css
+        ├── install.sh
+        ├── metadata.env
+        ├── sha256.env
+        ├── detect.sh
+        ├── patcher.py
+        └── payload/
+            ├── README.md
+            ├── get-file-list.js
+            ├── file-list-mapping.js
+            ├── print-file-list-component.js
+            └── file-list.css
 ```
 
 ## Current hacks
@@ -36,13 +37,21 @@ ElegooSlicer-add/
 
 Enhances the Centauri Carbon 2 file list embedded in ElegooSlicer / ElegooLink. The current implementation targets **ElegooSlicer v1.5.3.4 on Linux**.
 
-See `hacks/cc2-file-list/README.md`.
+Before:
+
+![CC2 file list before patch](assets/screenshots/before-cc2-list.png)
+
+After:
+
+![CC2 file list after patch](assets/screenshots/after-cc2-list.png)
+
+See `patches/cc2-file-list/README.md`.
 
 ## Version policy
 
-A hack is compatible only with the versions explicitly listed in its directory. Never assume that a patch written for one ElegooSlicer build will work on another build.
+A patch is compatible only with the target-file checksums explicitly listed in its directory. Never assume that a patch written for one bundled file will work on another build.
 
-Installers must verify the original file checksum before modifying anything. If the checksum does not match, the installer must stop instead of guessing.
+Installers must verify the original file checksum before modifying anything. If the checksum does not match, the installer must stop instead of guessing, unless the user explicitly forces the attempt.
 
 ## Updates
 
